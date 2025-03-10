@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script defer src="scripts.js"></script>  -->
+    <!-- <script nonce="randomNonceValue" src="inline-script.js"></script> // Verifies hashes using server  -->
+
+    <!-- SRI -->
+    <!-- Ensure that all external scripts and stylesheets use Subresource Integrity (SRI) to prevent the loading of malicious content. -->
+    <!-- but ensure all external resources are covered. -->
+    <!-- <script src="https://example.com/external-script.js"
+    integrity="sha384-<base64-encoded-hash>"
+    crossorigin="anonymous"></script> --> <!-- Be sure to convert sha384 or hashfile into base64. "file-> hasfile-> base64" and add base64 to the hashfile -->
+    <script defer src="scripts.js"
+    integrity="sha384-n1nsoS3y7/q6EjCelN2aykRAyEVBTZsgevm22v9dBte1m3iAkKYfHf0X4iaJ+M2P"
+    crossorigin="anonymous"></script> <!-- Cross-Origin Requests: If the resource is hosted on a different origin, you may need to specify the crossorigin attribute. The value can be anonymous or use-credentials, depending on whether you need to send credentials (like cookies) with the request. -->
+    
+
+    <!-- CSP -->
+    <!-- Avoid using unsafe-inline and unsafe-eval if possible. -->
+    <!-- Consider using report-uri or report-to in your CSP to collect reports of policy violations. -->
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'sha256-BwARdUSdLj5abKSc+iwxCFMU2MLKl0Pa/7z4pltj4o8=';
+    img-src 'self';
+    font-src 'self';
+    connect-src 'self';
+    media-src 'self';
+    frame-src 'self';
+"> <!-- img-src 'self' https://example.com;
+     font-src 'self' https://fonts.googleapis.com;
+     connect-src 'self' https://api.example.com;
+     media-src 'self' https://media.example.com;
+     frame-src 'self' https://www.youtube.com;
+     report-uri /csp-violation-report-endpoint; // Sends reports to designated server -->
+    
+    <!-- X-Content-Type-Options -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <!-- X-Frame-Options -->
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- Alternatively, you could use SAMEORIGIN if you need to allow framing from the same origin. -->
+    
+    <!-- Referrer Policy -->
+    <meta name="referrer" content="no-referrer"> <!-- Depending on your needs, you might also consider strict-origin-when-cross-origin for a balance between privacy and functionality. -->
+    
+    <!-- Feature Policy (or Permissions Policy) -->
+    <meta http-equiv="Permissions-Policy" content=" geolocation=(), microphone=(), camera=(), fullscreen=(), payment=(), notifications=(), push=(), midi=(), sync-xhr=(), screen-wake-lock=(), ambient-light-sensor=(), accelerometer=(), gyroscope=(), magnetometer=(), clipboard=(), document-domain=(), web-share=(), screen-orientation=(), xr-spatial-tracking=()"> <!--  Ensure that you only enable features that are necessary for your application. -->
+
+    <!-- <meta http-equiv="Strict-Transport-Security": This part indicates that the meta tag is setting an HTTP header equivalent, specifically for HSTS.
+         content="max-age=31536000; includeSubDomains":
+         max-age=31536000: This specifies the time, in seconds, that the browser should remember that the site should only be accessed using HTTPS. In this case, 31536000 seconds equals one year.
+         includeSubDomains: This directive indicates that the HSTS policy should also apply to all subdomains of the site. This means that if the main domain is accessed over HTTPS, all subdomains will also be required to use HTTPS. -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"> <!--(HSTS) Make sure your server is configured to serve all content over HTTPS and that you have a valid SSL certificate. -->
+
+    <!-- Input Validation and Sanitization:
+    Ensure that any user input is properly validated and sanitized on the server side to prevent injection attacks. -->
+
+    <!-- Use HTTPS:
+    Always serve your site over HTTPS to protect data in transit. Ensure that all resources (scripts, styles, images) are also loaded over HTTPS. -->
+    
+    <!-- Regular Security Audits:
+    Regularly audit your code and dependencies for vulnerabilities. Use tools like npm audit for JavaScript dependencies. -->
+    
+    <!-- Keep Software Updated:
+    Ensure that your web server, libraries, and frameworks are up to date with the latest security patches. -->
+
+        <!-- Server Side -->
+
+    <!-- Limit HTTP Methods:
+    Configure your server to only allow necessary HTTP methods (e.g., GET, POST) and disable others (e.g., PUT, DELETE) if not needed. -->
+
+    <!-- Security Headers:
+    Consider adding additional security headers such as X-XSS-Protection, Content-Security-Policy-Report-Only, and Referrer-Policy for more granular control. -->
+    <!-- X-XSS-Protection: 1; mode=block
+    The X-XSS-Protection header is a security feature used to help prevent cross-site scripting (XSS) attacks in web applications, and is not placed directly in the HTML document itself; instead, it is set in the HTTP response headers sent by the web server.
+
+    Content-Security-Policy-Report-Only:
+    This header allows you to test your Content Security Policy (CSP) without enforcing it. It reports violations to a specified URI, which can help you identify potential security issues without breaking your site.
+
+    Referrer-Policy:
+    This header controls how much referrer information is passed when navigating from your site to another. It can help protect user privacy. -->
+
+    <!-- Monitoring and Logging:
+    Implement logging and monitoring to detect and respond to suspicious activities. -->
+
+    <!-- Cross-Origin Resource Sharing (CORS):
+    If your application makes cross-origin requests, configure CORS headers on your server to restrict which domains can access your resources. -->
+
+    <!-- Input Validation and Output Encoding:
+    Implement strict input validation on the server side to prevent injection attacks (SQL injection, XSS, etc.).
+    Use output encoding to ensure that any user-generated content is safely displayed in the browser. -->
+
+    <!-- Rate Limiting and Throttling:
+    Implement rate limiting on your APIs to prevent abuse and brute-force attacks. -->
+</head>
+<body>
+    
+</body>
+</html>
