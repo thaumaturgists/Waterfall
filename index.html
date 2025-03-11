@@ -41,9 +41,6 @@
     <!-- X-Content-Type-Options -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     
-    <!-- X-Frame-Options -->
-    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- Alternatively, you could use SAMEORIGIN if you need to allow framing from the same origin. -->
-    
     <!-- Referrer Policy -->
     <meta name="referrer" content="no-referrer"> <!-- Depending on your needs, you might also consider strict-origin-when-cross-origin for a balance between privacy and functionality. -->
     
@@ -69,6 +66,42 @@
     Ensure that your web server, libraries, and frameworks are up to date with the latest security patches. -->
 
         <!-- Server Side -->
+
+<!-- 
+X-Frame-Options Header
+The X-Frame-Options HTTP header is used to control whether a browser should be allowed to render a page in a <frame>, <iframe>, <embed>, or <object>. This is primarily used to prevent clickjacking attacks.
+
+The X-Frame-Options header can take one of three values:
+- DENY: The page cannot be displayed in a frame, regardless of the site attempting to do so.
+- SAMEORIGIN: The page can only be displayed in a frame on the same origin as the page itself.
+- ALLOW-FROM uri: The page can only be displayed in a frame on the specified origin. (Note: This value is not supported in all browsers.)
+-->
+
+<!-- Example of setting the X-Frame-Options header in an HTTP response
+<!-- This should be done in your server configuration, not in HTML
+1. **Apache**:
+   ```apache
+   Header set X-Frame-Options "DENY"
+   ```
+2. **Nginx**:
+   ```nginx
+   add_header X-Frame-Options "DENY";
+   ```
+3. **Node.js/Express**:
+   ```javascript
+   res.setHeader('X-Frame-Options', 'DENY');
+   ```
+4. **Django**:
+   ```python
+   from django.views.decorators.http import require_http_methods
+   from django.http import HttpResponse
+
+   @require_http_methods(["GET"])
+   def my_view(request):
+       response = HttpResponse("Hello, World!")
+       response['X-Frame-Options'] = 'DENY'
+       return response
+   ``` -->
 
     <!-- Limit HTTP Methods:
     Configure your server to only allow necessary HTTP methods (e.g., GET, POST) and disable others (e.g., PUT, DELETE) if not needed. -->
