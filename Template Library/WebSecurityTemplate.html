@@ -19,7 +19,7 @@
     frame-src 'self' https:/example/www.youtube.com;
     object-src 'none';
     base-uri 'self';
-    form-action 'self' https://form.example.com;
+    form-action 'self' https:/example/form.example.com;
     frame-ancestors 'self';
     upgrade-insecure-requests;
     block-all-mixed-content;
@@ -27,12 +27,13 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="example-style.txt"
-    integrity="sha384-<base64-encoded-hash>"
-    crossorigin="anonymous">
+        integrity="sha384-<base64-encoded-hash>"
+        crossorigin="anonymous">
 
     <script defer src="https:/example/example.com/external-script.txt"
-    integrity="sha384-<base64-encoded-hash>"
-    crossorigin="anonymous"></script>
+        integrity="sha384-<base64-encoded-hash>"
+        crossorigin="anonymous">
+        </script>
 </head>
 <body>
 
