@@ -12,11 +12,17 @@
     default-src 'self';
     script-src 'self' 'sha256-encoded-hash';
     style-src 'self' 'sha256-encoded-hash';
-    img-src 'self' https:/example/example.com;
+    img-src 'self' https:/example/image.example.com;
     font-src 'self' https:/example/fonts.googleapis.com;
     connect-src 'self' https:/example/api.example.com;
     media-src 'self' https:/example/media.example.com;
     frame-src 'self' https:/example/www.youtube.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self' https://form.example.com;
+    frame-ancestors 'self';
+    upgrade-insecure-requests;
+    block-all-mixed-content;
     report-uri /csp-violation-report-endpoint;">
     <title>Document</title>
 
